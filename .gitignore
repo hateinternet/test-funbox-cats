@@ -8,5 +8,6 @@
 css/*.css
 node_modules/
 public/
+.publish/
 Thumbs.db
 .csscomb.json
