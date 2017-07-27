@@ -1,0 +1,23 @@
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 20px;
+  max-width: 1160px;
+
+  .tablet ({
+    & {
+      max-width: 1024px;
+      justify-content: space-around;
+    }
+  });
+
+  .mobile ({
+    & {
+      max-width: 767px;
+      padding: 0;
+      justify-content: center;
+    }
+  });
+}

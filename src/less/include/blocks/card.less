@@ -1,0 +1,274 @@
+.card {
+  padding-top: 23px;
+  display: flex;
+  flex-direction: column;
+
+  .tablet ({
+    & {
+      margin: 0 20px;
+    }
+  });
+
+  .mobile ({
+    & {
+      width: 100%;
+      align-items: center;
+    }
+  });
+}
+
+.card__content {
+  width: 320px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, transparent 49%, @main-color 49%, @main-color 55%, #fff 55%);
+    top: 0;
+    left: 0;
+  }
+}
+
+.card__slogan-wrapper {
+  width: 276px;
+  height: 44px;
+  background-color: #fff;
+  border: 4px solid @main-color;
+  border-bottom: none;
+  border-left: none;
+  border-top-right-radius: 10px;
+  padding: 17px 4px 5px;
+  // transition: 0.2s all;
+}
+
+.card__label {
+  font-family: @main-font;
+  color: #666;
+  font-size: 16px;
+  line-height: normal;
+
+  &--default {
+    display: block;
+  }
+
+  &--question {
+    display: none;
+  }
+}
+
+.card__content-inner {
+  width: 320px;
+  min-height: 436px;
+  background-color: #fff;
+  border: 4px solid @main-color;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-sizing: border-box;
+  padding: 2px 20px 100px 43px;
+  position: relative;
+  // transition: 0.2s all;
+  overflow: hidden;
+}
+
+.card__name {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: @main-font;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: normal;
+}
+
+.card__taste {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: @main-font;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.card__feature {
+  font-size: 14px;
+  line-height: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.card__kitty-picture {
+  position: absolute;
+  bottom: -92px;
+  left: -28px;
+}
+
+.card__weight {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 80px;
+  height: 80px;
+  background-color: @main-color;
+  border-radius: 50%;
+  color: #fff;
+  font-family: @main-font;
+  padding-top: 12px;
+  font-size: 0;
+  transition: 0.3s all;
+}
+
+.card__weight-number {
+  display: block;
+  text-align: center;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.card__weight-text {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.card__caption-text {
+  color: #fff;
+  font-family: @main-font;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 14px;
+  display: none;
+
+  &--default {
+    display: block;
+  }
+
+  &--selected {
+    display: none;
+  }
+
+  &--disabled {
+    display: none;
+    color: #ffff66;
+  }
+}
+
+.card__buy {
+  color: @main-color;
+  text-decoration: underline dashed;
+  cursor: pointer;
+}
+
+.card.hover {
+  & .card__content::before {
+    background: linear-gradient(135deg, transparent 49%, @main-color-hover 49%, @main-color-hover 55%, #fff 55%);
+  }
+
+  & .card__slogan-wrapper,
+    .card__content-inner {
+    border-color: @main-color-hover;
+  }
+
+  & .card__weight {
+    background-color: @main-color-hover;
+  }
+
+  & .card__buy {
+    color: @main-color-hover;
+  }
+}
+
+.card.selected {
+  & .card__content::before {
+    background: linear-gradient(135deg, transparent 49%, @selected-color 49%, @selected-color 55%, #fff 55%);
+  }
+
+  & .card__slogan-wrapper,
+    .card__content-inner {
+    border-color: @selected-color;
+  }
+
+  & .card__weight {
+    background-color: @selected-color;
+  }
+
+  & .card__caption-text--default {
+    display: none;
+  }
+
+  & .card__caption-text--selected {
+    display: block;
+  }
+}
+
+.card.selected.hover {
+  & .card__content::before {
+    background: linear-gradient(135deg, transparent 49%, @selected-color-hover 49%, @selected-color-hover 55%, #fff 55%);
+  }
+
+  & .card__slogan-wrapper,
+    .card__content-inner {
+    border-color: @selected-color-hover;
+  }
+
+  & .card__weight {
+    background-color: @selected-color-hover;
+  }
+
+  & .card__buy {
+    color: @selected-color-hover;
+  }
+
+  & .card__label--default {
+    display: none;
+  }
+
+  & .card__label--question {
+    display: block;
+    color: @selected-color-hover;
+  }
+}
+
+.card.disabled {
+  pointer-events: none;
+
+  & .card__content::before {
+    background: linear-gradient(135deg, transparent 49%, @disabled-color 49%, @disabled-color 55%, #fff 55%);
+  }
+
+  & .card__slogan-wrapper,
+    .card__content-inner {
+    border-color: @disabled-color;
+  }
+
+  & .card__label,
+    .card__name,
+    .card__taste,
+    .card__feature {
+    color: @disabled-color;
+  }
+
+  & .card__weight {
+    background-color: @disabled-color;
+  }
+
+  & .card__caption-text--default {
+    display: none;
+  }
+
+  & .card__caption-text--disabled {
+    display: block;
+  }
+
+  & .card__kitty-picture {
+    opacity: 0.5;
+  }
+}
